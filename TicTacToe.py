@@ -12,3 +12,8 @@ class TicTacToe:
         player2_symbol="X"
         player1_symbol = "O"
         next_player=0; #0:player1/player2, 1:player1, 2:player2
+       
+        def ask_for_name(self):
+            name = input("What's your name?")
+            return name
+        

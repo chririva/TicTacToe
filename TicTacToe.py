@@ -98,4 +98,4 @@ class TicTacToe:
                     self.battlefield[2][2] = symbol_of_the_player
 
     #def status_of_the_match(self):
-        #0
+        #00

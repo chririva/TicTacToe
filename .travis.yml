@@ -7,7 +7,7 @@ install:
   - pip install codecov
 
 script:
-  - coverage run tests.py
+  - coverage run TEST1.py
 
 after_success:
   - codecovst # or py.test for Python versions 3.5 and below

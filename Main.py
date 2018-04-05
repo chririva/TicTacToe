@@ -53,5 +53,5 @@ if game.status_of_the_match() == 1:
 elif game.status_of_the_match() == 2:
     print(game.get_name_player2() + " won this match.")
 elif game.status_of_the_match() == 3:
-    print("Nobody won this match ¯\_(ツ)_/¯")
+    print("Nobody won this match ¯\_(ツ)_/¯ ")
 

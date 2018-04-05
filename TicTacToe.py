@@ -49,6 +49,12 @@ class TicTacToe:
     def print_battlefield(self):
         print(tabulate(self.battlefield,tablefmt="grid"))
 
+    def get_next(self):
+        if self.next_player ==0:
+            return 1
+        else:
+            return self.next_player
+
     def is_free(self,location):
         free = True
         if location == 1 and self.battlefield[0][0] != '':
@@ -96,6 +102,10 @@ class TicTacToe:
                     self.battlefield[2][1] = symbol_of_the_player
                 elif location == 9:
                     self.battlefield[2][2] = symbol_of_the_player
+                if self.next_player == 0 or self.next_player == 1:
+                    self.next_player = 2
+                else:
+                    self.next_player = 1
 
     def status_of_the_match(self):
         #0: in game

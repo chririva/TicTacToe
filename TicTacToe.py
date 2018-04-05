@@ -14,10 +14,10 @@ class TicTacToe:
         self.next_player=0; #0:player1/player2, 1:player1, 2:player2
         self.battlefield=[['','',''],['','',''],['','','']]
        
-    def set_name_player1(self,name):
+    def set_name_player1(self, name):
         self.player1_name = name
 
-    def set_name_player2(self,name):
+    def set_name_player2(self, name):
         self.player2_name = name
 
     def get_name_player1(self):
@@ -32,25 +32,27 @@ class TicTacToe:
     def get_symbol_player2(self):
         return self.player2_symbol
 
-    def set_symbol1(self,symbol):
+    def set_symbol1(self, symbol):
         changed = True
         if symbol != self.player2_symbol:
             self.player1_symbol = symbol
         else:
             changed = False
         return changed
-    def set_symbol2(self,symbol):
+
+    def set_symbol2(self, symbol):
         changed = True
         if symbol != self.player1_symbol:
             self.player2_symbol = symbol
         else:
             changed = False
         return changed
+
     def print_battlefield(self):
-        print(tabulate(self.battlefield,tablefmt="grid"))
+        print(tabulate(self.battlefield, tablefmt="grid"))
 
     def get_next(self):
-        if self.next_player ==0:
+        if self.next_player == 0:
             return 1
         else:
             return self.next_player
@@ -77,11 +79,12 @@ class TicTacToe:
             free = False
         return free
 
-
-    def put_choice(self,player,location):
+    def put_choice(self, player, location):
         symbol_of_the_player=self.player1_symbol
+        self.next_player = 1
         if player == 2:
             symbol_of_the_player = self.player2_symbol
+            self.next_player = 2
         if player == self.next_player or self.next_player == 0:
             if self.is_free(location):
                 if location == 1:
@@ -102,6 +105,8 @@ class TicTacToe:
                     self.battlefield[2][1] = symbol_of_the_player
                 elif location == 9:
                     self.battlefield[2][2] = symbol_of_the_player
+                else:
+                    return
                 if self.next_player == 0 or self.next_player == 1:
                     self.next_player = 2
                 else:
@@ -134,9 +139,9 @@ class TicTacToe:
 
         if winner_symbol != '':
             if winner_symbol==self.player1_symbol:
-                result=1
+                result = 1
             elif winner_symbol==self.player2_symbol:
-                result=2
+                result = 2
         else: #withdraw or in game?
             for x in range(1, 10):
                 if self.is_free(x):

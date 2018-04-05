@@ -12,7 +12,7 @@ class TicTacToe:
         self.player1_symbol = 'X'
         self.player2_symbol = 'O'
         self.next_player=0; #0:player1/player2, 1:player1, 2:player2
-        self.battlefield=[["","",""],["","",""],["","",""]]
+        self.battlefield=[['','',''],['','',''],['','','']]
        
     def set_name_player1(self,name):
         self.player1_name = name
@@ -51,23 +51,23 @@ class TicTacToe:
 
     def is_free(self,location):
         free = True
-        if location == 1 and self.battlefield[0][0] != "":
+        if location == 1 and self.battlefield[0][0] != '':
             free = False
-        elif location == 2 and self.battlefield[0][1] != "":
+        elif location == 2 and self.battlefield[0][1] != '':
             free = False
-        elif location == 3 and self.battlefield[0][2] != "":
+        elif location == 3 and self.battlefield[0][2] != '':
             free = False
-        elif location == 4 and self.battlefield[1][0] != "":
+        elif location == 4 and self.battlefield[1][0] != '':
             free = False
-        elif location == 5 and self.battlefield[1][1] != "":
+        elif location == 5 and self.battlefield[1][1] != '':
             free = False
-        elif location == 6 and self.battlefield[1][2] != "":
+        elif location == 6 and self.battlefield[1][2] != '':
             free = False
-        elif location == 7 and self.battlefield[2][0] != "":
+        elif location == 7 and self.battlefield[2][0] != '':
             free = False
-        elif location == 8 and self.battlefield[2][1] != "":
+        elif location == 8 and self.battlefield[2][1] != '':
             free = False
-        elif location == 9 and self.battlefield[2][1] != "":
+        elif location == 9 and self.battlefield[2][2] != '':
             free = False
         return free
 
@@ -97,5 +97,39 @@ class TicTacToe:
                 elif location == 9:
                     self.battlefield[2][2] = symbol_of_the_player
 
-    #def status_of_the_match(self):
-        #00
+    def status_of_the_match(self):
+        #0: in game
+        #1: player 1 won
+        #2: player 2 won
+        #3: withdraw
+        winner_symbol = ''
+        result = 3
+
+        if self.battlefield[0][0] == self.battlefield[0][1] and self.battlefield[0][1] == self.battlefield[0][2] and self.battlefield[0][0] !='':
+            winner_symbol = self.battlefield[0][0]
+        if self.battlefield[1][0] == self.battlefield[1][1] and self.battlefield[1][1] == self.battlefield[1][2] and self.battlefield[1][0] !='':
+            winner_symbol = self.battlefield[1][0]
+        if self.battlefield[2][0] == self.battlefield[2][1] and self.battlefield[2][1] == self.battlefield[2][2] and self.battlefield[2][0] !='':
+            winner_symbol = self.battlefield[2][0]
+        if self.battlefield[0][0] == self.battlefield[1][0] and self.battlefield[1][0] == self.battlefield[2][0] and self.battlefield[0][0] !='':
+            winner_symbol = self.battlefield[0][0]
+        if self.battlefield[0][1] == self.battlefield[1][1] and self.battlefield[1][1] == self.battlefield[2][1] and self.battlefield[0][1] !='':
+            winner_symbol = self.battlefield[0][1]
+        if self.battlefield[0][2] == self.battlefield[1][2] and self.battlefield[1][2] == self.battlefield[2][2] and self.battlefield[0][2] !='':
+            winner_symbol = self.battlefield[0][2]
+        if self.battlefield[0][0] == self.battlefield[1][1] and self.battlefield[1][1] == self.battlefield[2][2] and self.battlefield[0][0] !='':
+            winner_symbol = self.battlefield[0][0]
+        if self.battlefield[0][2] == self.battlefield[1][1] and self.battlefield[1][1] == self.battlefield[2][0] and self.battlefield[0][2] !='':
+            winner_symbol = self.battlefield[0][2]
+
+        if winner_symbol != '':
+            if winner_symbol==self.player1_symbol:
+                result=1
+            elif winner_symbol==self.player2_symbol:
+                result=2
+        else: #withdraw or in game?
+            for x in range(1, 10):
+                if self.is_free(x):
+                    result = 0
+
+        return result

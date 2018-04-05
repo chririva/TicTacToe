@@ -33,9 +33,15 @@ elif num_players == 2:
 
 
 game.print_battlefield()
-game.put_choice(1,4)
-game.put_choice(2,5)
+game.put_choice(2,4)
+game.put_choice(1,5)
 game.put_choice(1,6)
-
-
+game.put_choice(1,1)
+game.put_choice(2,2)
+game.put_choice(2,3)
+game.put_choice(1,7)
+game.put_choice(2,8)
+game.put_choice(2,9)
 game.print_battlefield()
+
+print(game.status_of_the_match())

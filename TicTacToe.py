@@ -4,6 +4,8 @@
 #
 #
 from tabulate import tabulate
+import random
+
 
 class TicTacToe:
     def __init__(self, ):
@@ -57,7 +59,7 @@ class TicTacToe:
         else:
             return self.next_player
 
-    def is_free(self,location):
+    def is_free(self, location):
         free = True
         if location == 1 and self.battlefield[0][0] != '':
             free = False
@@ -80,7 +82,7 @@ class TicTacToe:
         return free
 
     def put_choice(self, player, location):
-        symbol_of_the_player=self.player1_symbol
+        symbol_of_the_player = self.player1_symbol
         self.next_player = 1
         if player == 2:
             symbol_of_the_player = self.player2_symbol
@@ -111,6 +113,14 @@ class TicTacToe:
                     self.next_player = 2
                 else:
                     self.next_player = 1
+
+    def computer_turn(self):
+        self.player2_name = 'Computer'
+        while True:
+            random_location = random.randint(1, 9)
+            if self.is_free(random_location):
+                self.put_choice(2, random_location)
+                break
 
     def status_of_the_match(self):
         #0: in game

@@ -1,6 +1,11 @@
-#Project Title: **TIC TAC TOE GAME**
-####It is game for two players
-####Implemented methods:
+# Project Title: TIC TAC TOE GAME
+
+[![Build Status](https://travis-ci.org/chririva/TicTacToe.svg?branch=master)](https://travis-ci.org/chririva/TicTacToe)
+
+# It is game for one and two players
+To run this game you need to have Python 3.6 installed
+
+# Implemented methods:
 1) set_name_player1
 2) set_name_player2
 3) get_name_player1
@@ -13,4 +18,3 @@
 10) is_free
 11) put_choice
 12) status_of_the_match
-
